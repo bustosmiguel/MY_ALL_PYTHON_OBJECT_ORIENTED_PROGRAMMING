@@ -1,0 +1,31 @@
+# %%
+
+class Games:
+    def __init__(self, chess, cards, puzzle, **kwargs): # **kwargs catches any extra named arguments
+        self.chess = chess
+        self.cards = cards
+        self.puzzle = puzzle
+        # Note: we don't need to handle kwargs here, but we accept them
+    
+    def PlayGames(self):
+        print("It's time to play this game!")
+
+class TableGames(Games):
+    def __init__(self, monopoly, catan, **kwargs): # First, take what's unique to TableGames
+        super().__init__(**kwargs) # Then, send the rest to the Parent Class (Games)
+        self.monopoly = monopoly # Specific attribute
+        self.catan = catan # Specific attribute
+
+# %% 3. HOW TO INSTANTIATE (The Magic Part)
+# We send EVERYTHING in one go. 
+# TableGames takes 'monopoly' and 'catan', and sends the rest to 'Games'
+mi_partida = TableGames(
+    monopoly="Banco Inmobiliario", 
+    catan="Isla Catan",
+    chess="Ajedrez Pro", 
+    cards="Poker", 
+    puzzle="1000 piezas"
+)
+
+print(f"I'm playing {mi_partida.monopoly} and {mi_partida.chess}")
+# %%
