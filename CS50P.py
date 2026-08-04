@@ -914,3 +914,331 @@ main()
 
 
 
+# NOTAS BUSTOSMIGUEL |||||| LOOPS
+# NOTAS BUSTOSMIGUEL |||||| LOOPS
+# NOTAS BUSTOSMIGUEL |||||| LOOPS
+# NOTAS BUSTOSMIGUEL |||||| LOOPS
+# NOTAS BUSTOSMIGUEL |||||| LOOPS
+# NOTAS BUSTOSMIGUEL |||||| LOOPS
+# NOTAS BUSTOSMIGUEL |||||| LOOPS
+# NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Demonstrates multiple (identical) function calls
+
+print("meow")
+print("meow")
+print("meow")
+
+# %%  NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Demonstrates a while loop, counting down
+# WHILE is one way to express a loop.
+# while helps to ask a question again and again
+# i es integer, ":" es then o entonces. (en SAS es "then")")
+# while "i" isNotEqualTo O, print "meow".
+# if "i" is always 3, you are looping forever or infinite loop
+# control bottom + C, cancell and it´s a friend to cancel
+# 
+
+i = 3
+while i != 0:
+   print("meow")
+   i = i - 1
+
+# i = i - 1 one less, one less, will hit zero
+
+# %%  NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Demonstrates a while loop, counting up from 1
+
+i = 1
+while i <= 3:
+   print("meow")
+   i = i + 1
+
+
+
+# %%  NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Demonstrates a while loop, counting up from 0
+i = 0
+while i < 3:
+   print("meow")
+   i = i + 1
+
+
+
+# %%  NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Demonstrates (more succinct) incrementation
+
+i = 0
+while i < 3:
+   print("meow")
+   i += 1
+
+
+# %%  NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+
+# Demonstrates a for loop, using a list
+for i in [0, 1, 2]:
+   print("meow")
+
+# %% c
+# Demonstrates a for loop, using range
+
+for i in range(3):
+   print("meow")
+
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Demonstrates a for loop, with _ as a variable
+
+for _ in range(3):
+   print("meow")
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Demonstrates str multiplication
+
+print("meow\n" * 3, end="")
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Introduces continue, break
+
+while True:
+   n = int(input("What's n? "))
+   if n <= 0:
+      continue
+   else:
+      break
+for _ in range(n):
+   print("meow")
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Removes continue
+while True:
+   n = int(input("What's n? "))
+   if n > 0:
+      break
+
+for _ in range(n):
+   print("meow")
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+
+# Demonstrates defining functions
+
+def main():
+   meow(get_number())
+   def get_number():
+      while True:
+         n = int(input("What's n? "))
+         if n > 1:
+            return n
+
+def meow(n):
+   for _ in range(n):
+      print("meow")
+
+main()
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Demonstrates indexing into a list
+
+students = ["Hermione", "Harry", "Ron"]
+
+print(students[0])
+print(students[1])
+print(students[2])
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Demonstrates iterating over a list
+
+students = ["Hermione", "Harry", "Ron"]
+for student in students:
+   print(student)
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Demonstrates iterating over and indexing into a list
+
+students = ["Hermione", "Harry", "Ron"]
+for i in range(len(students)):
+   print(i + 1, students[i])
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+
+# Demonstrates indexing into a dict
+
+students = {
+   "Hermione": "Gryffindor",
+   "Harry": "Gryffindor",
+   "Ron": "Gryffindor",
+   "Draco": "Slytherin",
+   }
+
+print(students["Hermione"])
+print(students["Harry"])
+print(students["Ron"])
+print(students["Draco"])
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+
+# Demonstrates iterating over and index into a dict
+
+students = {
+   "Hermione": "Gryffindor",
+   "Harry": "Gryffindor",
+   "Ron": "Gryffindor",
+   "Draco": "Slytherin",
+   }
+
+for student in students:
+   print(student, students[student], sep=", ")
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+
+# Demonstrates iterating over a list of dict objects
+
+students = [
+   {"name": "Hermione", "house": "Gryffindor", "patronus": "Otter"},
+   {"name": "Harry", "house": "Gryffindor", "patronus": "Stag"},
+   {"name": "Ron", "house": "Gryffindor", "patronus": "Jack Russell terrier"},
+   {"name": "Draco", "house": "Slytherin", "patronus": None},
+ ]
+
+for student in students:
+   print(student["name"], student["house"], student["patronus"], sep=", ")
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+Prints a column of bricks
+
+print("#")
+print("#")
+print("#")
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+
+# Prints column of bricks using a loop
+
+for _ in range(3):
+   print("#")
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Prints column of bricks using a function with a loop
+
+def main():
+   print_column(3)
+
+ def print_column(height):
+   for _ in range(height):
+      print("#")
+
+main()
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Prints column of bricks using a function with str multiplication
+
+def main():
+   print_column(3)
+
+def print_column(height):
+   print("#\n" * height, end="")
+
+main()
+
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Prints row of coins using a function with str multiplication
+
+def main():
+   print_row(4)
+
+def print_row(width):
+   print("?" * width)
+
+main()
+
+
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+
+# Prints square of bricks using a function with nested loops
+def main():
+   print_square(3)
+
+def print_square(size):
+   for i in range(size):
+      for j in range(size):
+         print("#", end="")
+      print()
+
+main()
+
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Prints square of bricks using a function with a loop and str multiplication
+def main():
+   print_square(3)
+
+def print_square(size):
+   for _ in range(size):
+      print("#" * size)
+
+main()
+
+
+
+
+# %% NOTAS BUSTOSMIGUEL |||||| LOOPS
+
+# Prints square of bricks using a function with a loop and str multiplication
+
+def main():
+   print_square(3)
+
+def print_square(size):
+   for _ in range(size):
+      print_row(size)
+
+def print_row(width):
+   print("#" * width)
+
+main()
+
+
+
+
+
+# %%
