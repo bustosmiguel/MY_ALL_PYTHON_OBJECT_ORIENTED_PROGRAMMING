@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Números</title>
+    <!-- Enlace al archivo CSS alojado en la carpeta static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=2">
+</head>
+
+<body>
+    <div class="card">
+        <h1>Comparador de Números</h1>
+
+        <form id="compareForm">
+            <div class="input-group">
+                <input type="number" id="x" placeholder="Valor X" required>
+                <input type="number" id="y" placeholder="Valor Y" required>
+            </div>
+            <button type="submit">Comparar</button>
+        </form>
+
+        <div id="result" class="result-box">Ingresa los valores arriba</div>
+    </div>
+
+    <script>
+        document.getElementById('compareForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const x = document.getElementById('x').value;
+            const y = document.getElementById('y').value;
+            const resDiv = document.getElementById('result');
+
+            try {
+                const response = await fetch(`/api/comparar?x=${x}&y=${y}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    resDiv.textContent = data.resultado;
+                } else {
+                    resDiv.textContent = data.error;
+                }
+            } catch (err) {
+                resDiv.textContent = 'Error al conectar con el servidor';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1886,6 +1886,18 @@ test_calculator4.py
 # # Celdas Interactivas Listas para Ejecutar en VS Code
 # Para ejecutar cada celda, presiona `Shift + Enter` dentro del bloque.
 
+# %%
+
+%pip install
+
+# %%
+%pip install pytest --break-system-packages
+
+#%%
+import pytest
+
+
+
 # %% NOTAS BUSTOSMIGUEL |||||| UNIT TEST - CASO 1: calculator5.py
 # Creamos automáticamente el archivo calculator5.py para poder importarlo
 with open("calculator5.py", "w") as f:
@@ -1903,15 +1915,6 @@ if __name__ == "__main__":
 print("✓ Archivo 'calculator5.py' generado con éxito.")
 
 
-# %%
-
-%pip install pytest
-
-# %%
-%pip install pytest --break-system-packages
-
-#%%
-import pytest
 
 
 # %% CASO 1: Pruebas para calculator5
@@ -1952,6 +1955,8 @@ if __name__ == "__main__":
 ''')
 
 print("✓ Archivo 'calculator6.py' generado con éxito.")
+
+
 
 # %% CASO 2: Pruebas con múltiples funciones en test_calculator6.py
 import pytest
@@ -4106,6 +4111,8 @@ print(f"5. MCD de {a} y {b}:", x)
 
 # %%
 # 6. LCM using GCD (Mínimo Común Múltiplo)
+
+import math
 a, b = 12, 18
 lcm = (a * b) // math.gcd(a, b)
 print(f"6. MCM de {a} y {b}:", lcm)
@@ -4188,6 +4195,8 @@ print(f"16. Primer carácter único en '{s}':", first_unique)
 
 # %%
 # 17. String compression (Compresión de cadenas)
+import itertools
+
 s = "aaabbc"
 compressed = "".join(f"{c}{len(list(g))}" for c, g in itertools.groupby(s))
 print(f"17. Compresión de '{s}':", compressed)
@@ -4210,6 +4219,10 @@ print("19. Prefijo común:", common_prefix)
 
 # %%
 # 20. Word frequency counter (Frecuencia de palabras)
+
+from collections import Counter
+
+
 text = "python es genial y python es rapido"
 word_freq = Counter(text.split())
 print("20. Frecuencia de palabras:", dict(word_freq))
@@ -4427,6 +4440,9 @@ print("40. Elemento pico encontrado:", find_peak(arr))
 
 # %%
 # 41. Count element frequency (Contar frecuencia de elementos)
+
+from collections import Counter
+
 lst = ["apple", "banana", "apple", "orange", "banana", "apple"]
 freq = Counter(lst)
 print("41. Frecuencias:", dict(freq))
@@ -4441,6 +4457,9 @@ print("42. Elementos duplicados:", duplicates)
 
 # %%
 # 43. Group items by property (Agrupar por propiedad)
+
+from collections import defaultdict
+
 words = ["apple", "banana", "avocado", "berry", "cherry"]
 grouped = defaultdict(list)
 for w in words:
@@ -4457,6 +4476,8 @@ print("44. Diccionario invertido:", inverted)
 
 # %%
 # 45. Most frequent element (Elemento más frecuente)
+
+from collections import Counter
 lst = [1, 3, 1, 3, 2, 1]
 most_frequent = Counter(lst).most_common(1)[0][0]
 print("45. Elemento más frecuente:", most_frequent)
@@ -4464,6 +4485,8 @@ print("45. Elemento más frecuente:", most_frequent)
 
 # %%
 # 46. Same elements, unordered (Mismos elementos sin importar orden)
+from collections import Counter
+
 l1, l2 = [1, 2, 3, 2], [2, 3, 1, 2]
 same_elements = Counter(l1) == Counter(l2)
 print("46. ¿Tienen los mismos elementos?:", same_elements)
@@ -4519,7 +4542,11 @@ print("51. Factorial(5):", factorial(5))
 
 
 # %%
-# 52. Fibonacci with memoization
+# 52. Fibonacci with 
+
+from functools import lru_cache
+
+
 @lru_cache(maxsize=None)
 def fib_memo(n):
     return n if n < 2 else fib_memo(n - 1) + fib_memo(n - 2)
@@ -4599,6 +4626,9 @@ print("59. MCD recursivo (48, 18):", gcd_rec(48, 18))
 
 # %%
 # 60. Climb stairs (Escaleras - 1 o 2 escalones)
+
+from functools import lru_cache
+
 @lru_cache(maxsize=None)
 def climb_stairs(n):
     return n if n <= 2 else climb_stairs(n - 1) + climb_stairs(n - 2)
@@ -4621,6 +4651,9 @@ print("71. Datos con nulos reemplazados:", cleaned_data)
 
 # %%
 # 72. Remove outliers (IQR) (Remover valores atípicos)
+
+import statistics
+
 vals = [10, 12, 12, 13, 12, 11, 100]  # 100 es outlier
 q1, q3 = statistics.quantiles(sorted(vals), n=4)[0], statistics.quantiles(sorted(vals), n=4)[2]
 iqr = q3 - q1
@@ -4762,6 +4795,7 @@ weighted_avg = sum(v * w for v, w in zip(values, weights)) / sum(weights)
 print("88. Media ponderada:", weighted_avg)
 
 
+
 # %%
 # 89. Linear regression slope/intercept (Pendiente Regresión Lineal)
 def slope(x, y):
@@ -4890,6 +4924,7 @@ lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 s = set(lst)  # Usa memoria O(n) pero reduce búsquedas de O(n) a O(1)
 print("99. ¿Existe el 7 en el set (O(1))?:", 7 in s)
 
+"""..."""
 
 # %%
 # 100. Breaking down an ambiguous problem (Metodología de resolución de problemas)
@@ -4905,7 +4940,10 @@ print("100. Resolución de problemas:", solve_problem([]))
 
 ---
 
+#%%
+
 ### Resumen de los archivos y cambios realizados:
 - **`python_logics_interactive.py`**: Archivo script completo formateado en bloques interactivos (`# %%`). 
 - Incluye el código documentado con comentarios `#` de todos los capítulos que se mostraban en las imágenes (Matemáticas, Cadenas, Listas, Búsqueda/Ordenamiento, Diccionarios, Recursión, Limpieza de Datos, Estadística y Algoritmos para entrevistas).
 - Puedes presionar **Shift + Enter** o hacer clic en *"Run Cell"* arriba de cada separador `# %%` en VS Code para ir ejecutando las partes por separado.
+
