@@ -18,8 +18,33 @@ is_on = True  # boolean
 list1 = [1, 2, 3]  # List
 tuple1 = (1, 2, 3)  # Tuple
 set1 = {1, 2, 3}  # Set
-dict1 = {"a": 1, "b": 2}  # Dictionary
+dict1 = {"a": 1, "b": 2}  # Dictionary, se identifican los datos por un nombre
 
+
+# --- 4 ESTRUCTURAS PRINCIPALES (Las más usadas) ---
+
+# List: Secuencia ordenada y mutable. Permite elementos duplicados.
+list1 = [1, 2, 3]
+
+# Tuple: Secuencia ordenada e INMUTABLE (no se puede modificar tras crearla). Permite duplicados.
+tuple1 = (1, 2, 3)
+
+# Set: Colección desordenada de elementos ÚNICOS (sin duplicados) y mutables.
+set1 = {1, 2, 3}
+
+# Dictionary: Colección de pares clave-valor. Claves únicas e indexadas.
+dict1 = {"a": 1, "b": 2}
+
+# --- 3 ESTRUCTURAS ADICIONALES (Datos específicos y binarios) ---
+
+# FrozenSet: Versión INMUTABLE de 'set'. No se puede alterar ni añadir elementos.
+fset1 = frozenset([1, 2, 3])
+
+# Bytes: Secuencia binaria e INMUTABLE de bytes (números del 0 al 255).
+bytes1 = b"Hola"
+
+# ByteArray: Versión MUTABLE de 'bytes'. Permite modificar sus bytes.
+b_array = bytearray(b"Hola")
 
 # 4. CONDITIONALS
 if x > 5:
@@ -562,6 +587,1047 @@ for i in range(len(frutas)):
 # %% LEN es longitud
 nombre = "Carlos"
 print(len(nombre))  # 6 letras o seis elementos.
+
+
+########### OPERADOR IN:
+########### OPERADOR IN:
+########### OPERADOR IN:
+########### OPERADOR IN:
+########### OPERADOR IN:
+
+### "IN"        :   Comprueba que un elemento SI existe.
+### "NOT IN"    :   Comprueba que un elemento NOexiste.
+
+######## AMBOS ENTREGAN UN BOOLEANO: TRUE OR FALSE.
+
+
+# %% OPERADOR IN
+# Si naranja existe en la lista fruta.
+# Aquí solo reconoce mayúsculas:
+fruta = ("Zandia", "Manzana", "Plátano", "Naranja")
+print("Naranja" in fruta)
+
+
+# %% en caso de cambiar a mayúsculas y minúsculas, aquí las reconoce:
+
+fruta = ("Zandia", "Manzana", "Plátano", "Naranja")
+# Texto a buscar (puede estar en mayúsculas, minúsculas o mezclado)
+busqueda = "naranja"
+# Convertimos a minúsculas la búsqueda y cada elemento de la tupla
+encontrado = busqueda.lower() in (f.lower() for f in fruta)
+print(encontrado)  # Imprime: True
+
+# %% lo mismo que lo anterior, pero más rápido:
+
+fruta = ("Zandia", "Manzana", "Plátano", "Naranja")
+print("naranja" in str(fruta).lower())  # Imprime: True
+# %%
+fruta = ("Zandía", "Plátano")
+# Le aplicas .lower() a lo que buscas Y a la tupla
+print("Zandía".lower() in str(fruta).lower())  # Imprime: True
+
+
+### LO ANTERIOR CON "IF":
+
+# %% RESPETANDO EL FORMATO COMO ESTÁ "naranja"
+
+frutas = ["manzana", "pera", "frutilla", "naranja"]
+fruta = input("¿Qué fruta buscas? ")
+
+if fruta in frutas:
+    print("La fruta está en la LISTA")
+else:
+    print("No se encuentra en la LISTA")
+
+# %% MAYÚSCULAS Y MINUSCULAS "NaRaNjA"
+
+frutas = ["manzana", "pera", "frutilla", "naranja"]
+
+# Convertimos lo que escribe el usuario a minúsculas de inmediato
+fruta = input("¿Qué fruta buscas? ").lower()
+
+# Convertimos la lista temporalmente a texto en minúsculas para comparar
+if fruta in str(frutas).lower():
+    print("La fruta está en la LISTA")
+else:
+    print("No se encuentra en la LISTA")
+
+
+# %%
+
+# Podemos entonces, ver si:
+# - Un producto existe
+# - Si un usuario está registrado
+# - Si una palabra está dentro de una lista
+# - VALIDAR OPCIONES DE UN PROGRAMA
+
+
+# %% "NOT IN" para revisar lo contrario.
+frutas = ["manzana", "pera", "frutilla", "naranja"]
+# Convertimos lo que escribe el usuario a minúsculas de inmediato
+fruta = "naranja"
+
+if fruta not in frutas:
+    print("Esa fruta no está en la lista")
+
+
+##########SITUACIÓN REAL EN CÓDIGO
+##########SITUACIÓN REAL EN CÓDIGO
+##########SITUACIÓN REAL EN CÓDIGO
+##########SITUACIÓN REAL EN CÓDIGO
+##########SITUACIÓN REAL EN CÓDIGO
+
+
+# %%
+
+
+# Definición de listas con los datos del inventario
+productos = [
+    "Mouse",
+    "Teclado",
+    "Monitor",
+    "HMDI",
+    "LAPTOP",
+]  # Lista con los nombres de los productos
+precios = [21, 33, 23, 22, 11]  # Lista con los precios correspondientes
+stock = [
+    2122,
+    3223,
+    4332,
+    1212,
+    1120,
+]  # Lista con las cantidades disponibles de cada producto
+
+# Bucle principal del programa que se repetirá hasta que el usuario decida salir
+while True:
+    print("\n==tiendas==")  # Imprime el encabezado del menú
+    print("1. Ver productos")  # Opción 1: Muestra el catálogo
+    print("2. Comprar")  # Opción 2: Proceso de compra
+    print("3. Salir")  # Opción 3: Finaliza el programa
+
+    opcion = input(
+        "Selecciona una opción: "
+    )  # Solicita al usuario ingresar el número de opción
+
+    if opcion == "1":  # Si elige la opción 1
+        print("\n--- Catálogo de Productos ---")  # Encabezado del catálogo
+        for i in range(
+            len(productos)
+        ):  # Recorre la lista usando las posiciones (índices)
+            print(
+                f"{productos[i]} - Precio: S/.{precios[i]} - Stock: {stock[i]}"
+            )  # Muestra producto, precio y stock actual
+
+    elif opcion == "2":  # Si elige la opción 2 (Comprar)
+        producto = input(
+            "¿Qué producto desea comprar? "
+        )  # Pregunta el nombre del producto deseado
+
+        if (
+            producto not in productos
+        ):  # Revisa si el producto NO está en la lista de productos
+            print(
+                "Producto no encontrado"
+            )  # Advierte al usuario si escribió mal el producto
+            continue  # Vuelve al inicio del bucle `while` sin ejecutar el resto del código
+
+        posicion = productos.index(
+            producto
+        )  # Encuentra la posición (índice) del producto en la lista
+        cantidad = int(
+            input("Cantidad: ")
+        )  # Pide la cantidad deseada y la convierte a número entero
+
+        if (
+            cantidad <= 0
+        ):  # Evalúa si la cantidad ingresada es un número negativo o cero
+            print("Cantidad invalida")  # Alerta sobre la cantidad no válida
+        elif (
+            cantidad > stock[posicion]
+        ):  # Compara la cantidad pedida con el stock disponible en esa posición
+            print(
+                "Stock insuficiente"
+            )  # Alerta si el usuario pide más de lo que hay guardado
+        else:  # Si la cantidad es válida y hay suficiente stock
+            subtotal = (
+                precios[posicion] * cantidad
+            )  # Calcula el precio total multiplicando precio por cantidad
+            stock[
+                posicion
+            ] -= cantidad  # Descuenta la cantidad comprada del stock actual
+
+            print("Compra realizada")  # Confirma que la transacción se concretó
+            print("total S/.", subtotal)  # Muestra el monto final a pagar
+
+    elif opcion == "3":  # Si elige la opción 3
+        print("¡Gracias por su visita!")  # Muestra mensaje de despedida
+        break  # Rompe el bucle `while` y finaliza el programa
+
+    else:  # Si ingresa cualquier opción diferente de 1, 2 o 3
+        print(
+            "Opción no válida, intente de nuevo."
+        )  # Maneja entradas incorrectas del usuario
+# %%
+
+
+########## FUNCIONES EN PYTHON
+########## FUNCIONES EN PYTHON
+########## FUNCIONES EN PYTHON
+########## FUNCIONES EN PYTHON
+########## FUNCIONES EN PYTHON
+########## FUNCIONES EN PYTHON
+
+# %%
+
+# TAREA PARA REALIZAR VARIAS VECES,PARA ESO USAMOS F(X) LA FUNCIÓN.
+# DEF indica a python que vamos a definir una f(x) función.
+# después escribimos el nombre de la función con paréntesis y ":".
+# donde:
+# - def         = definición de la f(x)
+# - nombre      = nombre de la f(x)
+# - ":"         = Para comenzar el bloque de instrucciones.
+# - Identación  = Indica qué código pertenece a la función.
+
+
+def saludar():
+    print("Hola, Bienvenido")
+
+
+# %%
+
+# llamamos a la función, utilizando su nombre:
+# python ejecutará las instrucciones que están dentro:
+
+saludar()
+
+
+# %%
+
+
+def mostrar_menu():  # función mostrar_menu()
+    print("\n ####TIENDA####")
+    print("1. Ver Productos")
+    print("2. Comprar")
+    print("3. Salir")
+
+
+def mostrar_productos():  # función mostrar_productos()
+    productos = ["laptop", "mouse", "monitor", "hdmi", "headphones"]
+
+    print("\n PRODUCTOS")
+
+    for i in range(len(productos)):
+        print(i + 1, productos[i])
+
+
+# %% lo nterior con while true podemos separar cada tarea:
+
+while True:
+    mostrar_menu()
+
+    opcion = input("Selecciona una opción: ")
+
+    if opcion == "1":
+        mostrar_productos
+
+    if opcion == "2":
+        print("Aquí realizamos una compra")
+
+    elif opcion == "3":
+        print("Programa finalizado")
+        break
+    else:
+        print("Opción no válida")
+
+
+####### FUNCIONES CON PARÁMETROS
+####### FUNCIONES CON PARÁMETROS
+####### FUNCIONES CON PARÁMETROS
+####### FUNCIONES CON PARÁMETROS
+####### FUNCIONES CON PARÁMETROS
+####### FUNCIONES CON PARÁMETROS
+####### FUNCIONES CON PARÁMETROS
+####### FUNCIONES CON PARÁMETROS
+# donde:
+# - Parámetro: es la información que nuestra función espera recibir.
+# - Y el valor que colocamos cuando llamamos a la función es el dato que le estamos enviando.
+# - ASÍ LAS F(X) SEAN MÁS ÚTILES Y REUTILIZABLES.
+
+# %% FUNCIONES CON PARÁMETROS
+# Cómo hacer que nuestra f(x) reciba información?
+# QUE NUESTRA F(X) TRABAJE CON DIFERENTES DATOS
+# ESTA F(X) PERMITE ÚNICAMENTE SALIDAR A CARLOS
+
+
+def saludar():
+    print("Hola Carlos")
+
+
+# %%
+saludar()
+
+
+# %% PERO SI QUIERO SALUDAR A OTRA PERSONA?, PARA ELLO, LOS PARÁMETROS:
+
+# function definition:
+# def add(a, b):
+# return a + b
+
+# function call:
+# add(2 + 3)
+
+# un parámetro es un dato que enviamos a nuestra función para que trabaje con el.
+# la estructura sería "nombre" como parámetro:
+
+
+def saludar(nombre):  # PARAMETRO "nombre".
+    print("Hola", nombre)
+
+
+saludar("Carla")
+saludar("Miguel")
+
+# %% Dado esto, no crearemos una f(x) diferente para cada producto:
+
+
+def mostrar_producto(nombre, precio, stock):
+
+    print("\n -----PRODUCTO------")
+    print("nombre: ", nombre)
+    print("precio: S/.", precio)
+    print("stock: ", stock)
+
+
+mostrar_producto("Laptop", 2500, 30)
+mostrar_producto("Mouse", 2500, 30)
+mostrar_producto("Monitor", 2500, 30)
+
+# podemos reutilizar este código con información diferente
+
+
+####### return
+####### return
+####### return
+####### return
+####### return
+# donde:
+# - parámetros  =Permiten enviar datos a una función
+# -return       = Permite devolver el resultado para utilizarlo en otra parte en nuestro programa
+# -print        = muestra información en pantalla
+
+
+# %%
+
+
+def calcular_total(precio, cantidad):  # LA F(X) REALIZA LA OPERACIÒN
+    total = (
+        precio * cantidad
+    )  # PERO EL RESULTADO SE ENCUENTRA DENTRO DE ELLA. # acá realiza el cálculo
+    return total  # Y SE SACA ESE RESULTADO CON RETURN () (O permite devolver un valor de nuestra función) # acá devuelve el resultado que se guarda en *total (abajo)
+
+
+producto = "Mouse"
+precio = 20
+cantidad = 12
+
+total = calcular_total(precio, cantidad)  # *total
+# guardamos el resultado de lo anterior en este "total".
+print("Producto", producto)
+print("Cantidad", cantidad)
+print("Total S/.", total)
+
+if total >= 200:
+    print("Tienes envío gratis")
+else:
+    print("Debes pagar adicional por el envío")
+
+# IMPORTANTE | IMPORTANTE | IMPORTANTE:
+# Entonces: Una f(x) puede recibir info mediante parámetros, y devolver información mediante return()
+
+# DESDE AHORA NUESTRAS FUNCIONES PERMITIRAN:
+# - procesar cálculos
+# - Entregar información
+
+
+####### PRINT, STR(),  CONCATENACIÓN (+) y FORMATO STRING (f)
+####### PRINT, STR(),  CONCATENACIÓN (+) y FORMATO STRING (f)
+####### PRINT, STR(),  CONCATENACIÓN (+) y FORMATO STRING (f)
+####### PRINT, STR(),  CONCATENACIÓN (+) y FORMATO STRING (f)
+####### PRINT, STR(),  CONCATENACIÓN (+) y FORMATO STRING (f)
+
+# print() = mostrar información
+# str() = Convertir valor a texto
+# Operador concatenar "+"= Une textos y variables
+# Formato String f"" = Insertar variables dentro de un texto, y es más claro que concatenar con "+"
+
+# PRINT:
+# Permite mostrar información:
+# - información en la consola
+# - mostrar el contenido de una variable.
+
+# CONCATENAR:
+# Con "+" unimos textos y variables
+# Y mostramos como solo un mensaje.
+
+# F-STRING:
+# Cuando es mucha info, es mejor f-string que concatenar.
+
+# %%
+
+nombre = "Carlos"
+curso = "Python"
+edad = 40
+
+print("hola soy " + nombre + ", y tengo " + str(edad))
+
+# donde la variable numércica debe estructurarse con str()
+
+# PERO CUANDO SON MUCHAS CONCATENACIONES CON "+", es mejor hacerlo con:
+# F-STRING:
+
+# %% F STRING (FORMAT STRING)
+# cuando convertimos los números a texto
+
+print(f"hola {nombre}")  # al usar f-string, las variables van con corchetes.
+print(f"Hola, {nombre}, y tengo {edad}")  # F-STRING FACILITA Y MEJOR QUE CONCATENAR
+
+# %% fstring también podemos utilizar variables dentro de las llaves:
+precio = 32112
+cantidad = 22
+
+print(f"El total es: S/. {precio * cantidad}")
+
+# %% SI LO ANTERIOR LO HACEMOS A UNA TIENDA:
+producto = "Mouse"
+precio = 80
+cantidad = 3
+
+total = precio * cantidad
+
+print("######compra######")
+print(f"Producto: {producto}")
+print(f"Precio: S/.{precio}")
+print(f"Cantidad: {cantidad}")
+print(f"Total: S/. {total}")
+
+
+# fstrings:
+# combinamos texto, variables y números de una forma más limpia y fácil de leer.
+
+# si las tuplas nos ayudasn a almacenar datos que NO queremos modificar
+# y hemos trabajado en datos para identificar mediante posiciones.
+# con los diccionarios, los encontramos por su nombre, almacenando una clave y un valor.
+
+#### Diccionario
+#### Diccionario
+#### Diccionario
+#### Diccionario
+# Dictionary, se identifican los datos por un nombre:
+# {} LLAVES ES DICCIONARIO.
+# .keys() CLAVES IDENTIFICA EL DATO
+# .values() VALOR ES LA INFORMACIÓN ALMACENADA
+# DICCIONARIO["CLAVE"] NOS PERMITE ACCEDER AL VALOR.
+
+# %%
+
+alumno = {"nombre": "Carlos", "edad": 19, "curso": "python"}
+
+print(alumno)
+# para acceder a un dato, es mediante clave:
+
+print(alumno["nombre"])
+print(alumno["curso"])
+
+# la ventaja de los diccionarios es que se pueden modificar los valores:
+
+alumno["edad"] = 20
+print(alumno["edad"])
+
+# se pueden agregar nuevos datos, utilizando una clave:
+# se agrega tiktok al diccionario con la clave "carlos_12";
+
+alumno["tiktok"] = "carlos_12"
+print(alumno)
+
+if "nombre" in alumno:
+    print("El nombre está registrado")
+
+# Ahora si almacenamos información de un producto:
+
+
+# %%
+
+producto = {"Nombre": "Mouse", "Precio": 19, "Stock": 22}
+
+
+print(f"Producto: {producto['Nombre']}")
+print(f"Precio: S/. {producto['Precio']}")
+print(f"Stock: {producto['Stock']}")
+
+
+####### RECORRER DICCIONARIOS CON FOR EN PYTHON
+####### RECORRER DICCIONARIOS CON FOR EN PYTHON
+####### RECORRER DICCIONARIOS CON FOR EN PYTHON
+####### RECORRER DICCIONARIOS CON FOR EN PYTHON
+####### RECORRER DICCIONARIOS CON FOR EN PYTHON
+# ÚTIL CUANDO HAY MUCHA INFO Y NO SABEMOS CUANTOS DATOS TENDREMOS
+
+# for clave in diccionario: Recorre las claves
+# diccionario[clave]:Obtiene el valor correspondiente
+# print(f"{clave}: {usuario[clave]}")  Muestra de forma sencilla: claves y valores
+
+
+# %% RECORRER DICCIONARIOS CON FOR EN PYTHON
+# Si tenemos esto o muchos datos, tendríamos que escribir un print() para cada uno
+# Podemos utilizar el ciclo "for" para recorrer un diccionario:
+
+# Ejemplo del ciclo "for": recorre CLAVES del diccionario, las muestra una por una:
+
+
+# %%
+producto = {"Nombre": "Mouse", "Precio": 19, "Stock": 22}
+
+
+# %% MUESTRA TODAS LAS CLAVES
+for clave in producto:
+    print(clave)  # (Sin hacer print() a cada una)
+
+# %% MUESTRA TODOS LOS VALORES
+for clave in producto:
+    print(producto[clave])  # (Sin hacer print() a cada uno)
+
+
+# %% EN VEZ DE HACERLO MANUALMENTE...
+
+usuario = {"nombre": "Carlos", "edad": 20, "lenguaje": "python"}
+print(usuario["nombre"])
+print(usuario["edad"])
+print(usuario["lenguaje"])  # TODO ESTO ES HACER PRINT A CADA UNO
+
+# %% ... EL CICLO "FOR" RECORRE TODO EL DICCIONARIO DA CLAVES Y SUS VALORES.
+for clave in usuario:
+    print(f"{clave}: {usuario[clave]}")
+
+
+########### .KEYS(), .VALUES() y .ITEMS() EN DICCIONARIOS
+########### .KEYS(), .VALUES() y .ITEMS() EN DICCIONARIOS
+########### .KEYS(), .VALUES() y .ITEMS() EN DICCIONARIOS
+########### .KEYS(), .VALUES() y .ITEMS() EN DICCIONARIOS
+########### .KEYS(), .VALUES() y .ITEMS() EN DICCIONARIOS
+# A VECES CUANDO TRABAJAMOS CON DICCIONARIOS SOLO NECESITAMOS:
+
+# 1. .keys() SOLAMENTE LAS CLAVES
+# 2. .values() SOLAMENTE LOS VALORES
+# 3. .items() CLAVES Y VALORES.
+
+# CON: .keys()
+
+# %% volvemos al diccionario simple:
+
+producto = {"Nombre": "Mouse", "Precio": 19, "Stock": 22}
+
+# %% .key:
+
+print(producto.keys())  # MUESTRA LAS CLAVES QUE EXISTEN DENTRO DEL DICCIONARIO
+
+
+# %% O SE PUEDEN RECORRER UTILIZANDO EL CICLO FOR()
+
+for clave in producto.keys():
+    print(clave)  # recorre únicamente las claves...
+
+# %% ... pero si queremos valores:
+
+for valor in producto.values():
+    print(valor)  # recorre únicamente las claves...
+
+# %% .values() ENTREGA LAS CLAVES Y SUS VALORES CORRESPONDIENTES:
+
+usuario = {"nombre": "Carlos", "edad": 20, "lenguaje": "python"}
+
+for clave, valor in usuario.items():
+    print(f"{clave}:{valor}")
+
+
+######## EVITA ERRORES CON GET() EN PYTHON
+######## EVITA ERRORES CON GET() EN PYTHON
+######## EVITA ERRORES CON GET() EN PYTHON
+######## EVITA ERRORES CON GET() EN PYTHON
+
+# 1.- diccionario["clave"] : Accede directamente al valor, o muestra ERROR.
+
+# 2.- diccionario.get("clave"): Obtiene valor sin generar ese ERROR.
+
+# 3.- get("clave", "valor") : Permite establecer un valor alternativo si la clave NO existe.
+# (como sin existencias, etc. categoría no registrada, etc.)
+# %% EVITA ERRORES CON GET() EN PYTHON
+usuario = {"nombre": "Carlos", "edad": 20, "lenguaje": "python"}
+
+print(usuario.get("Carlos"))
+print(usuario.get("nombre"))
+print(
+    usuario.get("correo"), "Correo no registrado"
+)  # si la clave "correo" no existe que diga esto-
+
+# %%
+
+producto = {"nombre": "laptop", "cantidad": 332, "precio": 154}
+
+
+nombre = producto.get("nombre", "producto desconocido")
+categoria = producto.get("categoria", "categoría no registtrada")
+
+# %%
+
+print(f"Producto = {nombre}")
+print(f"Producto = {categoria}")
+# como categoria no existe, py solo proporciona los existentes que es laptop
+# esto permite trabajar diccionarios de una manera mucho más segura.
+
+
+######## MODIFICAR ELIMINAR DATOS DE UN DICCIONARIO
+######## MODIFICAR ELIMINAR DATOS DE UN DICCIONARIO
+######## MODIFICAR ELIMINAR DATOS DE UN DICCIONARIO
+######## MODIFICAR ELIMINAR DATOS DE UN DICCIONARIO
+######## MODIFICAR ELIMINAR DATOS DE UN DICCIONARIO
+######## MODIFICAR ELIMINAR DATOS DE UN DICCIONARIO
+# MODIFICAR Y ELIMINAR DATOS DE NUESTROS DICCIONARIOS
+# NOS DA MUCHO CONTROL SOBRE LA INFORMACIÓN QUE ALMACENAMOS.
+
+# .update() PARA:
+# editar/agregar una nueva clave
+
+# .pop() PARA:
+# eliminar una clave y su valor
+
+# diccionario["clave"] = valor PARA:
+# Modificar directamente un valor.
+
+
+# %% MODIFICAR Y ELIMINAR DATOS DE NUESTROS DICCIONARIOS
+
+producto = {"Nombre": "Mouse", "Precio": 19, "Stock": 22}
+
+# PODEMOS CAMBIAR EL VALOR DE UNA CLAVE:
+# PODEMOS CAMBIAR EL value() DE UNA keys():
+
+producto["precio"] = 90
+
+
+# %%
+producto.update({"precio": 100, "stock": 322})
+
+# %%
+# tambien par una nueva clave, que se llame categoría:
+producto.update({"categoría": "accesorios"})
+
+
+# %% # .pop() para eliminar una clave:
+producto.pop("stock")
+
+# %% PODEMOS GUARDAR EL VALOR ELIMINADOQUE ERA "STOCK", AHORA SE GUARDA:
+# solo la elimina si la clave existe obviamente.
+# por eso antes de modificar el diccionario, ver qué valores tengo.
+
+producto = {"nombre": "mouse", "precio": 19, "stock": 22}
+
+stock = producto.pop("stock")
+print(f"stock eliminado:{stock}")
+print(producto)
+
+
+########## MÉTODO CLEAR: ELIMINA TODO EN EL DICCIONARIO, CUIDADO CON CLEAR().
+########## MÉTODO COPY: CREAR UNA COPIA DE TODO EL DICCIONARIO.
+
+# CLEAR
+# %% CLEAR BORRA TODO EN EL DICCIONARIO
+
+usuario = {"nombre": "Carlos", "edad": 20, "lenguaje": "python"}
+
+# %% CLEAR BORRANDO TODO EN EL DICCIONARIO
+usuario.clear()
+
+
+# COPY
+# %% COPI COPIA TODO EN NUESTRO DICCIONARIO
+
+usuario = {"nombre": "Carlos", "edad": 20, "lenguaje": "python"}
+
+
+# %% usuario_COPIA
+
+usuario = {"nombre": "Carlos", "edad": 20, "lenguaje": "python"}
+
+# %%
+
+usuario_copia = usuario.copy()
+# %%
+
+print(usuario_copia)
+
+# %%
+
+
+############ diccionarios dentro de diccionarios
+############ diccionarios dentro de diccionarios
+############ diccionarios dentro de diccionarios
+############ diccionarios dentro de diccionarios
+############ diccionarios dentro de diccionarios
+# GUARDAR MÁS INFO DENTRO DE UN MISMO DATO
+# INFO MAS ORGANIZADA COMO CATEGORIA Y DATOS DEL PROVEEDOR
+# ASÍ COLOCAR OTRO DICCIONARIO DENTRO DEL PRIMERO
+
+# %%
+
+producto = {
+    "nombre": "COMPUTADOR",
+    "precio": 1000,
+    "stock": 2112,
+    "proveedor": {"nombre": "NET", "ciudad": "EEUU"},
+}
+
+
+print(producto["proveedor"]["nombre"])
+print(producto["proveedor"]["ciudad"])
+
+# %% CAMBIAR A CHILE
+
+
+producto = {
+    "nombre": "COMPUTADOR",
+    "precio": 1000,
+    "stock": 2112,
+    "proveedor": {"nombre": "NET", "ciudad": "EEUU"},
+}
+
+
+producto["proveedor"]["ciudad"] = "Chile"
+
+
+# %%
+print(producto["proveedor"]["nombre"])
+print(producto["proveedor"]["ciudad"])
+
+
+###### DICCIONARIO ANIDADO: ES DICCIONARIO CON OTROS DICCIONARIOS.
+#### CON MAYOR INFORMACIÓN ORGANIZADA
+###### DICIONARIO CON OTROS DICCIONARIOS ES: DICCIONARIO ANIDADO.
+###### ORGANIZAMOS POR NIVELES.
+### sobretodo para trabajar con API´s, BBDD, etc.
+
+# diccionario["clave"]["otra_clave"] Accedemos a datos internos.
+
+# %%
+
+productos = {
+    "producto1": {"nombre": "monitor", "precio": 900},
+    "producto2": {"nombre": "laptop", "precio": 2333},
+}
+# %%
+
+print(productos["producto1"]["nombre"])
+print(productos["producto2"]["precio"])
+
+
+###### LISTAS DENTRO DE DICCIONARIOS
+###### LISTAS DENTRO DE DICCIONARIOS
+###### LISTAS DENTRO DE DICCIONARIOS
+###### LISTAS DENTRO DE DICCIONARIOS
+# SI AHORA EL PRODUCTO TIENE:
+# VARIOS COLORES Y CARACTERÍSTICAS.
+# GUARDAREMOS VARIOS VALORES DENTRO DE 1 CLAVE.
+
+# Una nota diferenciadora para claridad
+# con diccionarios organizamos la info con claves y valores.
+# con listas guardamos varios elementos dentro de una de esas claves .
+
+
+# %%
+
+
+producto = {
+    "nombre": "COMPUTADOR",
+    "precio": 1000,
+    "colores": ["negro", "blanco", "rojo"],
+}
+
+
+# %% llamar a elemntos utilizando sus índices:
+
+print(producto["colores"][0])
+print(producto["colores"][1])
+
+# %% llamar ALL elemntos con el ciclo for:
+
+for color in producto["colores"]:
+    print(color)
+
+# %% Agregar nuevos elementos: ASI LLEGAR A 4 COLORES
+
+producto["colores"].append("azul")
+
+# %% OTRO EJEMPLO:
+
+estudiante = {
+    "nombre": "Javier",
+    "edad": 26,
+    "cursos": ["python", "java", "javascript"],
+}
+
+# %% Acceder al primer curso, el primero es cero:
+
+print(estudiante["cursos"][0])
+
+# %% Acceder a todos los cursos
+
+for curso in estudiante["cursos"]:
+    print(curso)
+
+
+###### VARIOS DICCIONARIOS DENTRO DE UNA LISTA:
+###### VARIOS DICCIONARIOS DENTRO DE UNA LISTA:
+###### VARIOS DICCIONARIOS DENTRO DE UNA LISTA:
+###### VARIOS DICCIONARIOS DENTRO DE UNA LISTA:
+###### VARIOS DICCIONARIOS DENTRO DE UNA LISTA:
+
+# %%
+
+productos = [
+    {"nombre": "monitor", "precio": 433},
+    {"nombre": "teclado", "precio": 33},
+    {"nombre": "teclado", "precio": 33},
+]
+
+print(productos[2])  # al diccionario número 3
+print(productos[2]["nombre"])  # solo al nombre del número 3
+
+
+# %% Como tenemos varios, podemos recorrerlos con ciclo for()
+
+for producto in productos:
+    print(producto["nombre"])
+
+
+#
+# %% AHORA PARA UN SISTEMA: UNA LISTA CON VARIOS DICCIONARIOS
+
+productos = [
+    {"nombre": "teclado", "precio": 900},
+    {"nombre": "monitor", "precio": 300},
+    {"nombre": "lápices", "precio": 20},
+]
+
+print("=====PRODUCTOS=====")
+
+for producto in productos:
+    print(f"{producto["nombre"]} -USD {producto["precio"]}")
+
+
+# %% AHORA BUSCAR INFO DE ESA LISTA QUE TIENE 3 DICCIONARIOS.
+
+for producto in productos:
+    if producto["nombre"] == "lápices":
+        print(producto)
+
+
+# %%
+
+
+for producto in productos:
+    if producto["nombre"] == "lápices":
+        print(f"El producto es: USD {producto["precio"]}")
+# %% condiciones , para búsquedas útiles.
+
+for producto in productos:
+    if producto["precio"] > 100:  # muestra solo >100 usd.
+        print(producto["nombre"])
+
+# %%
+
+busqueda = "lápices"
+
+for producto in productos:
+    if producto["nombre"] == busqueda:
+        print(f"Producto encontrado: {producto["nombre"]}")
+        print(f"Precio USD{producto["precio"]}")
+
+
+### ordenar con sort
+### ordenar con sort
+### ordenar con sort
+
+### varios productos ordenados por precios:
+
+
+# %%
+#### key: dato que vamos a ordenar para registrar
+productos = [
+    {"nombre": "teclado", "precio": 900},
+    {"nombre": "monitor", "precio": 300},
+    {"nombre": "lápices", "precio": 20},
+]
+
+productos.sort(key=lambda producto: producto["precio"])
+
+for producto in productos:
+    print(f"{producto["nombre"]} USD {producto["precio"]}")
+
+
+# ahora al revés:
+# %%ahora al revés:
+# con reverse = True.
+# sort ordena la lista
+# key indica a python qué dato debe utilizar para ordenar
+# reverse = True (Invierte el orden)
+
+
+productos.sort(key=lambda producto: producto["precio"], reverse=True)
+for producto in productos:
+    print(f"{producto["nombre"]} USD {producto["precio"]}")
+
+
+###### qué es lambda
+###### qué es lambda
+###### qué es lambda
+###### qué es lambda
+###### qué es lambda
+# map escribe una operación
+# lambda: Permite escribir esa operación de forma corta
+# list(): convierte el resultado en una lista.
+
+# %% SIN LAMBDA SIN LAMBDA SIN LAMBDA SIN LAMBDA SIN LAMBDA
+#  SIN LAMBDA
+
+
+def doble(numero):
+    return numero * 2
+
+
+doble(5)
+
+# %% con lambda
+# CON LAMBDA:
+
+doble = lambda numero: numero * 2
+doble(5)
+
+# %%
+
+# cuando se usó lambda en unos 20 lineas atrás, era:
+productos.sort(key=lambda producto: producto["precio"])
+
+# porque creó una función pequeña llamada "producto" y sencilla en una línea-
+
+# %%
+######### MAP, aplica una operación a todos los elementos:
+
+precios = [
+    132,
+    322,
+    3222,
+    322,
+    322,
+    322,
+    221,
+    231,
+    544,
+    654,
+    132,
+    322,
+    3222,
+    322,
+    322,
+    322,
+    221,
+    231,
+    544,
+    654,
+]
+
+
+# %%
+
+nuevos_precios = map(lambda precio: precio + 5, precios)
+
+
+# %%
+
+print(nuevos_precios)
+
+# %%
+# CONVERTIRLOS EN UNA LISTA:
+# CONVERTIRLOS EN UNA LISTA:
+
+nuevos_precios = list(map(lambda precio: precio + 5, precios))
+
+# %%
+print(nuevos_precios)
+# %%
+
+
+numeros = [
+    132,
+    322,
+    3222,
+]
+
+
+resultado = list(map(lambda numero: numero * 2, numeros))
+print(resultado)
+# %%
+precios_con_igv = list(map(lambda precio: precio * 1.19, precios))
+
+print(precios_con_igv)
+# %%
+
+
+######## FILTRAR DATOS CON FILTER
+######## FILTRAR DATOS CON FILTER
+######## FILTRAR DATOS CON FILTER
+######## FILTRAR DATOS CON FILTER
+# map = transforma datos
+# filter = filtra datos
+# filtra los elementos que únicamente cmplen esa condición
+# y mezclando ambos con lambda, se puede manipular mejor los datos.
+
+# %%
+# LISTA DE PRECIOS:
+
+precios = [32, 23, 22, 31, 54, 620]
+# se puede hacer if para las condiciones, pero igual se
+# puede con filter, y esta es la estructura de filter:
+# filter(condicion, lista)
+
+# %%
+resultado = filter(lambda precio: precio > 100, precios)
+print(resultado)  # Esto NO sirve, debe llevar list:
+# con list nuevamente se transforma a una lista:
+
+# %% llevamos el resultado a una lista, con list:
+
+print(list(resultado))
+
+
+### segundo ejemplo:
+
+# %%
+
+productos = [
+    {"nombre": "lápiz", "precio": 89},
+    {"nombre": "teclado", "precio": 89},
+    {"nombre": "audífonos", "precio": 109},
+    {"nombre": "monitor", "precio": 289},
+]
+
+
+# %%
+
+productos_over_100 = list(filter(lambda producto: producto["precio"] > 100, productos))
+
+# %%
+
+for productos in productos_over_100:
+    print(f"{producto["nombre"]} usd. {producto["precio"]}")
 
 
 # %%
