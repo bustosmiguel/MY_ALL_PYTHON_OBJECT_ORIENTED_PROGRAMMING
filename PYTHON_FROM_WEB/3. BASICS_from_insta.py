@@ -1630,4 +1630,481 @@ for productos in productos_over_100:
     print(f"{producto["nombre"]} usd. {producto["precio"]}")
 
 
+##### REDUCE / TRABAJAR CON LISTAS
+##### REDUCE / TRABAJAR CON LISTAS
+##### REDUCE / TRABAJAR CON LISTAS
+##### REDUCE / TRABAJAR CON LISTAS
+##### Tomar varios elementos y combinarlos, hasta obtener un solo resultado.
+# map() transforma elementos
+# filter() selecciona elementos
+# reduce() combina elementos hasta obtener un solo resultado
+
+
+# %%
+
+from functools import reduce
+
+# %% ejemplo simple
+
+numeros = [2, 3, 4]  # podemos sumarlos con un ciclo, o utilizando reduce:
+total = reduce(lambda a, b: a * b, numeros)
+print(total)
+
+# %% ejemplo en algún negocio
+
+
+precios = [23, 34, 5, 66]
+
+total = reduce(lambda a, b: a + b, precios)
+
+print(f"El total de la compra es: USD {total}")
+
+
+###### CONJUNTOS O SET {}
+# PARA ALMACENAR DATOS ÚNICOS, SIN REPETICIONES
+# NO PERMITE ELEMENTOS DUPLICADOS
+# AUNQUE ESCRIBAMOS DOS VECES DIAMOND, EL CONJUNTO SOLO CONSERVA UNA
+# util cuando tenemos datos petetitivos y solo queremos los datos únicos.
+# igual se puede agregar elementos utilizando .add() y eliminar con .remove()
+# set() Almacena elementos únicos
+# add() Agrega un elemento
+# remove() Elimina un elemento
+# in (Comprueba si un elemento existe)
+
+
+# %%
+
+jewels = {"diamond", "ruby", "emerald", "diamond"}
+print(jewels)  # solo muestra una vez diamond, aunque lo escribamos dos veces
+
+jewels.add("sapphire")  # agrega un nuevo elemento
+print(jewels)
+
+jewels.remove("ruby")  # elimina un elemento
+print(jewels)
+
+if "diamond" in jewels:
+    print("Diamond is in the set")  # verifica si un elemento está en el conjunto
+
+
+# %%
+
+productos_vistos = {"laptop", "mouse", "monitor", "laptop", "mouse"}
+print(productos_vistos)  # solo muestra una vez cada producto, aunque se repitan
+
+
+# %% si los recorremos con el ciclo for:
+
+for producto in productos_vistos:
+    print(producto)
+
+
+###### CONJUNTOS O SET {} ENCONTRANDO ELEMENTOS EN COMUN ENTRE ELLOS
+###### intersection() = elementos en común
+###### union() = combina los elementos de ambos conjuntos
+###### difference() = elementos que están en un conjunto, pero no en el otro
+#### todo lo anterior permite comparar conjuntos y ver qué elementos tienen en común, cuáles son diferentes, etc.
+
+# %% Si queremos saber qué productos tienen ambos clientes:
+
+primero = {"laptop", "tecado Dell", "computador"}
+segundo = {"mouse", "tecado pro", "computador"}
+
+a = primero.intersection(segundo)
+print(a)
+
+# %% UNE AMBOS CONJUNTOS, PERO SIN REPETICIONES:
+
+b = primero.union(segundo)
+print(b)
+
+# %% QUÉ ELEMENTO TIENE UN CONJUNTO, PERO NO EL OTRO:
+
+c = primero.difference(segundo)
+print(c)
+
+
+# COMPRENSIÓN DE LISTAS ES: es crear nuevas listas
+# Escribímos código de una forma mucho más corta y fácil de leer, para crear listas.
+# Escribímos código de una forma mucho más corta y fácil de leer, para crear listas.
+### COMPRENSIÓN DE LISTAS EN PYTHON | LIST COMPREHENSION
+### COMPRENSIÓN DE LISTAS EN PYTHON | LIST COMPREHENSION
+### COMPRENSIÓN DE LISTAS EN PYTHON | LIST COMPREHENSION
+### COMPRENSIÓN DE LISTAS EN PYTHON | LIST COMPREHENSION
+### COMPRENSIÓN DE LISTAS EN PYTHON | LIST COMPREHENSION
+### COMPRENSIÓN DE LISTAS EN PYTHON | LIST COMPREHENSION
+### COMPRENSIÓN DE LISTAS EN PYTHON | LIST COMPREHENSION
+### COMPRENSIÓN DE LISTAS EN PYTHON
+# %%
+
+lista = [1, 2, 3, 4, 5]
+dobles = []
+
+for numero in lista:
+    dobles.append(numero * 2)
+
+print(dobles)
+
+
+# %% Lo anterior, pero de una forma más fácil:
+dobles = [numero * 2 for numero in lista]
+print(dobles)
+
+# "[numero * 2" ....NUMERO POR DOS, lo que queremos GUARDAR.
+# "for numero in lista]" ....DE DONDE VAMOS A OBTENER LOS ELEMENTOS
+## BASICAMENTE SIGNIFICA:
+# CREA UNA LISTA CON EL DOBLE DE CADA NUMERO DE LA LISTA NÚMEROS
+# TAMBIÉN PODEMOS CREAR UNA CONDICIÓN:
+
+# %%
+# TAMBIÉN PODEMOS CREAR UNA CONDICIÓN, NÚMEROS PARES:
+pares = [numero for numero in lista if numero % 2 == 0]
+print(pares)  # CREA UNA LISTA CON LOS NÚMEROS PARES DE LA LISTA NÚMEROS
+
+# %%
+# TAMBIÉN PODEMOS CREAR UNA CONDICIÓN: NÚMEROS MAYORES A 3:
+mayores_a_tres = [numero for numero in lista if numero > 3]
+print(mayores_a_tres)  # CREA UNA LISTA CON LOS NÚMER
+
+# %% TODO LO ANTERIOR A ALGO MÁS REALISTA:
+
+precios = [23, 34, 5, 66, 12, 90, 100, 200]
+precios_top = [precio for precio in precios if precio > 50]
+print(precios_top)  # CREA UNA LISTA CON LOS PRECIOS MAYORES A 50
+
+
+# COMPRENSIÓN DE DICCIONARIOS ES: es crear nuevos diccionarios
+# Escribímos código de una forma mucho más corta y fácil de leer, para crear diccionarios.
+# Escribímos código de una forma mucho más corta y fácil de leer, para crear diccionarios.
+###### COMPRENSIÓN DE DICCIONARIOS EN PYTHON | DICTIONARY COMPREHENSION
+###### COMPRENSIÓN DE DICCIONARIOS EN PYTHON | DICTIONARY COMPREHENSION
+###### COMPRENSIÓN DE DICCIONARIOS EN PYTHON | DICTIONARY COMPREHENSION
+###### COMPRENSIÓN DE DICCIONARIOS EN PYTHON | DICTIONARY COMPREHENSION
+###### COMPRENSIÓN DE DICCIONARIOS EN PYTHON | DICTIONARY COMPREHENSION
+###### COMPRENSIÓN DE DICCIONARIOS EN PYTHON | DICTIONARY COMPREHENSION
+###### COMPRENSIÓN DE DICCIONARIOS EN PYTHON | DICTIONARY COMPREHENSION
+###### COMPRENSIÓN DE DICCIONARIOS EN PYTHON | DICTIONARY COMPREHENSION
+
+# %% CREAR LISTA DE PRODUCTOS, DONDE CADA PRODUCTO TENGA UN CÓDIGO:
+
+products = ["car", "motor", "laptop", "mouse", "headphones"]
+
+# esto es largo...
+inventario = {}
+
+for producto in products:
+    inventario[producto] = "DISPONIBLE"
+
+print(inventario)  # CREA UN DICCIONARIO CON CÓDIGOS PARA CADA PRODUCTO
+# %%
+
+# por eso se utiliza...
+
+inventario = {producto: "DISPONIBLE" for producto in products}
+
+# donde:
+# "producto: " ES LA CLAVE
+# "DISPONIBLE" ES EL VALOR
+# "for producto in products" INDICA DE DONDE OBTENEMOS LOS DATOS.
+
+print(inventario)  # CREA UN DICCIONARIO CON CÓDIGOS PARA
+
+# %% TAMBIÉN SE PUEDE CREAR VALORES DISTINTOS PARA CADA ELEMENTO.
+
+precios = [23, 34, 5, 66, 12, 90, 100, 200]
+precios_igv = {precio: precio * 1.19 for precio in precios}
+print(precios_igv)  # CREA UN DICCIONARIO CON LOS PRECIOS Y SUS VALORES CON IGV
+
+
+# %% TAMBIÉN SE PUEDE CREAR UNA CONDICIÓN:
+
+precios = [232, 323, 3332, 432]
+
+precios_top = {precio: precio * 1.19 for precio in precios if precio > 300}
+
+print(precios_top)
+
+
+############### ENUMERATE RECORRER LISTAS
+############### ENUMERATE RECORRER LISTAS
+############### ENUMERATE RECORRER LISTAS
+############### ENUMERATE RECORRER LISTAS
+############### ENUMERATE RECORRER LISTAS
+# Hasta ahora para RECORRER LISTAS, se ha utilizado el bucle for()
+# AHORA, CON NUMERATE, TENDREMOS SU POSICIÓN
+# ENUMERATE: NOS DA LA POSICIÓN Y EL ELEMENTO
+# , stat = PERMITE COMENZAR EN 1.
+
+# %%
+
+frutas = ["manzana", "banana", "naranja", "pera"]
+position = 0
+
+for fruta in frutas:
+    print(position, fruta)
+    position += 1  # incrementa la posición en 1 , es un contador manual.
+
+
+# %% PERO CON ENUMERATE, SE FACILITA LO ANTERIOR:
+
+frutas = ["manzana", "banana", "naranja", "pera"]
+
+for position, fruta in enumerate(frutas):
+    print(position, fruta)  # enumerate() nos da la posición y el elemento de la lista
+
+# AHORA TENEMOS LA "POSICIÓN DE ELEMENTO, 0, 1, 2, 3 etc." Y "FRUTA".
+# en python COMIENZA desde CERO.
+# Si queremos que comience desde 1, se puede agregar "start = 1"
+
+# %% "start = 1"
+
+for position, fruta in enumerate(frutas, start=1):
+    print(position, fruta)
+
+
+# %%
+menu_tienda = {"comida_1", "comida_2", "comida_3", "comida_4", "comida_5"}
+
+for numero, producto in enumerate(menu_tienda):
+    print(numero, producto)  # enumerate() nos da la posición y el elemento de la lista
+
+
+# %% y lo anterior, pero que comience en 1:
+
+menu_tienda = {"comida_1", "comida_2", "comida_3", "comida_4", "comida_5"}
+
+for numero, producto in enumerate(menu_tienda, start=1):
+    print(numero, producto)  # enumerate() nos da la posición y el elemento de la lista
+
+
+######### RECORRER DOS LISTAS AL MISMO TIEMPO CON ZIP
+######### RECORRER DOS LISTAS AL MISMO TIEMPO CON ZIP
+######### RECORRER DOS LISTAS AL MISMO TIEMPO CON ZIP
+######### RECORRER DOS LISTAS AL MISMO TIEMPO CON ZIP
+# zip = UNIR TEMPORALMENTE LOS ELEMENTOS DE DOS O MÁS LISTAS
+# zip relaciona el primer elemento de una lista con el primero de la otra lista.
+# zip recorre varias listas al mismi tiempo, trabajando con datos relacionados de forma más sencilla.
+
+# %%
+productos = ["A", "B", "C", "D"]
+precios = [223, 2211, 547, 99]
+stock = [22, 33, 44, 55]
+
+
+for producto, precio, stock in zip(productos, precios, stock):
+    print(f"{producto}: USD {precio} - Cantidad: {stock}")
+
+
+# %% TAMBIÉN CON ZIP, CREAMOS DICCIONARIO:
+
+productos = ["A", "B", "C", "D"]
+precios = {12, 3, 4, 57}
+
+inventario = dict(zip(productos, precios))
+print(inventario)
+
+
+# COMPROBAR CONDICIONES EN UNA LISTA CON ANY() Y ALL()
+# COMPROBAR CONDICIONES EN UNA LISTA CON ANY() Y ALL()
+# COMPROBAR CONDICIONES EN UNA LISTA CON ANY() Y ALL()
+# COMPROBAR CONDICIONES EN UNA LISTA CON ANY() Y ALL()
+# ANY() - DEVUELVE True SI AL MENOS UNO CUMPLE LA CONDICION
+# ALL() - DEVUELVE True SI TODOS CUMPLEN LA CONDICION
+
+# %%
+
+numeros = [1, 2, 3, 4, 50, 33, 21]
+
+resultado = any(numero > 10 for numero in numeros)
+
+print(resultado)  # True, porque hay un número mayor a 10 en la lista
+
+# %%
+resultado = any(numero > 1000 for numero in numeros)
+print(resultado)
+
+
+# %% PERO CON ALL() TODOS LOS ELEMENTOS CUMPLEN CON UNA CONDICIÓN
+resultado = any(numero == 33 for numero in numeros)
+
+print(resultado)
+
+
+# %% SI TODOS LOS PRODUCTOS TIENEN STOCK DISPONIBLE:
+
+resultado = any(numero > 0 for numero in numeros)
+
+print(resultado)
+
+
+####### MIN , MAX Y SUM EN PYTHON
+####### MIN , MAX Y SUM EN PYTHON
+####### MIN , MAX Y SUM EN PYTHON
+####### MIN , MAX Y SUM EN PYTHON
+
+
+# %%
+mumeros = [2, 3, 4, 2, 2, 2, 42, 1, 1, 34, 1000]
+menor = min(mumeros)
+
+print(f"El número menor es: {menor}")
+
+
+# %%
+
+maximo = max(mumeros)
+
+print(f"El número máximo es: {maximo}")
+
+# %%
+
+
+suma = sum(mumeros)
+
+print(f"El total es: {suma}")
+
+
+# %%
+
+precios = [23, 34, 5, 66, 12, 90, 100, 200]
+
+precio_menor = min(precios)
+precio_mayor = max(precios)
+total = sum(precios)
+promedio = total / len(precios)
+
+
+print(f"El precio menor es: {precio_menor}")
+print(f"El precio mayor es: {precio_mayor}")
+print(f"El total es: {total}")
+print(f"El promedio es: {promedio}")
+
+
+########SORTED
+
+# %%
+
+numeros = [2, 3, 4, 2, 2, 2, 42, 1, 1, 34, 1000]
+ordenados = sorted(numeros)
+print(ordenados)  # ordena de menor a mayor
+
+
+# %% DE MENOR A MAYOR
+
+ordenados = sorted(numeros, reverse=True)
+print(ordenados)
+
+
+# %%
+productos = ["Z", "B", "C", "D"]
+ordenados = sorted(productos)
+print(ordenados)  # ordena de menor a mayor
+
+
+# %%
+
+productos = ["Z", "B", "C", "D"]
+ordenados = sorted(productos, reverse=True)
+print(ordenados)  # ordena de menor a mayor
+
+# %% AHORA, SI TENEMOS UNA LISTA DE PRODUCTOS CON SUS PRECIOS, Y QUEREMOS ORDENARLOS POR PRECIO:
+
+productos = [
+    {"nombre": "teclado", "precio": 900},
+    {"nombre": "monitor", "precio": 300},
+    {"nombre": "lápices", "precio": 20},
+]
+
+productos_ordenados = sorted(productos, key=lambda producto: producto["precio"])
+
+for producto in productos_ordenados:
+    print(f"{producto['nombre']} - USD {producto['precio']}")
+
+# %% lambda nos permite utilizar qué valor para ordenar
+
+
+for producto in productos_ordenados:
+    productos_ordenados = sorted(
+        productos, key=lambda producto: producto["precio"], reverse=True
+    )
+
+for producto in productos_ordenados:
+    print(f"{producto['nombre']} - USD {producto['precio']}")
+
+# %%
+
+# sort(), modifica la lista original y
+# sorted , crea una nueva lista ordenada, o devuelve una nueva lista ordenada.
+# reverse true, ordena de forma descendente, de mayor a menor.
+# key = indica que valor utilizar para ordenar
+
+
+numeros = [20, 45, 55]
+resultado = sorted(numeros)
+
+print(numeros)
+print(resultado)  # crea una nueva lista ordenada, sin modificar la original
+
+
+####### INSISTANCE EN PYTHON
+####### INSISTANCE EN PYTHON
+####### INSISTANCE EN PYTHON
+####### INSISTANCE EN PYTHON
+####### INSISTANCE EN PYTHON
+# DATOS CRECEN PERO NECESAITAMOS SABER QUÉ TIPO DE DATO ESTAMOS RECIBIENDO.
+# INSISTANCE: Comprueba si un dato pertenece a un determinado tipo.
+# int: números enteros
+# float : números decimales
+# str: texto
+# list: lista
+#
+# %%
+
+dato = 300
+
+isinstance(dato, int)
+
+
+# %%
+
+edad = 25
+print(isinstance(edad, int))  # True
+
+# %% pero si lo cuadamos entre comillas, es texto:
+
+edad = "25"
+print(isinstance(edad, int))  # False
+
+# %%
+
+nombre = "Hellen"
+print(isinstance(nombre, str))  # True
+
+# %%
+
+precio = 43
+productos = ["teclado", "monitor", "lápices"]
+
+print(isinstance(precio, int))  # True
+print(isinstance(productos, list))  # True
+print(isinstance(productos, dict))  # False
+print(isinstance(precios, float))  # False
+
+
+# %%
+
+datos = [33, "mouse", 33, "teclado", ("laptop", 33), {"nombre": "Carlos"}]
+
+for dato in datos:
+    if isinstance(dato, int):
+        print(f"{dato} es un número entero")
+    elif isinstance(dato, str):
+        print(f"{dato} es un texto")
+    elif isinstance(dato, tuple):
+        print(f"{dato} es una tupla")
+    elif isinstance(dato, dict):
+        print(f"{dato} es un diccionario")
+    else:
+        print(f"{dato} es de otro tipo de dato")
+
 # %%
