@@ -2107,4 +2107,19 @@ for dato in datos:
     else:
         print(f"{dato} es de otro tipo de dato")
 
+
 # %%
+
+datos = [33, "mouse", 33, "teclado", ("laptop", 33), {"nombre": "Carlos"}]
+
+for dato in datos:
+    if isinstance(dato, int):
+        print(f"{dato} es un número entero")
+    elif isinstance(dato, str):
+        print(f"{dato} es un texto")
+    elif isinstance(dato, tuple):
+        print(f"{dato} es una tupla")
+    elif isinstance(dato, dict):
+        print(f"{dato} es un diccionario")
+    else:
+        print(f"{dato} es de otro tipo de dato")
